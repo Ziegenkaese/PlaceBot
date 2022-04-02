@@ -134,11 +134,26 @@ class Placer:
         print(f"placed {color.name} tile at {x}, {y}")
 
     def get_map_data(self):
-        r = requests.get(self._get_map_url())
+        r = requests.get(self._get_map_url(0))
         assert r.status_code == 200
 
-        im = Image.open(BytesIO(r.content))
-        map_data = self.image_to_data(im, (1000, 1000))
+        im1 = Image.open(BytesIO(r.content))
+
+        r = requests.get(self._get_map_url(1))
+        assert r.status_code == 200
+
+        im2 = Image.open(BytesIO(r.content))
+        #print(im1.palette)
+        #im = Image.new(im1.mode, (im1.width + im2.width, im1.height), )
+        #im.paste(im1, (0, 0))
+        #im.paste(im2, (im1.width, 0))
+
+        map1_data = self.image_to_data(im1, (1000, 1000))
+        map2_data = self.image_to_data(im2, (1000, 1000))
+        map_data = np.concatenate((map1_data, map2_data), axis=1)
+
+        img = Image.fromarray(map_data, 'RGB')
+        img.save("map.png")
 
         return map_data
 
@@ -187,7 +202,7 @@ class Placer:
 
         return data
 
-    def _get_map_url(self):
+    def _get_map_url(self, which: int):
         ws = websocket.create_connection("wss://gql-realtime-2.reddit.com/query")
         ws.send(json.dumps({
             "type": "connection_init",
@@ -206,7 +221,7 @@ class Placer:
                     "input": {
                         "channel": {
                             "category": "CANVAS",
-                            "tag": "0",
+                            "tag": "{}".format(which),
                             "teamOwner": "AFD2022"
                         }
                     }
