@@ -9,11 +9,11 @@ from PIL import Image
 #    exit()
 
 username = "hhn-test"
-password = "HAH THis time I remembered to delete it, throwaway anyway"
+password = "INSERT PASSWORT HERE"
 
 placer = Placer()
 placer.login(username, password)
 
 
-placer.maintain_image(1842, 827, 'HHN-3x10.png', (3, 10))
+placer.maintain_image(1812, 826, 'HHN-3x10.png', (3, 10))
 
