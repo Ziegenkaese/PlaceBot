@@ -17,6 +17,10 @@ filename = sys.argv[5]
 placer = Placer()
 placer.login(username, password)
 
-
-placer.maintain_image(X, Y, filename, (5, 12))
+while True:
+    try:
+        print("starting maintain_image")
+        placer.maintain_image(X, Y, filename, (3, 10))
+    except:
+        print("!!!Something went wrong when maintaining, restarting!!!")
 
