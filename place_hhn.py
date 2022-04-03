@@ -4,10 +4,11 @@ from PIL import Image
 
 
 
-if len(sys.argv) >= 3:
+if len(sys.argv) <= 4:
     print("usage: python3 place_tile.py [reddit username] [reddit password] [X] [y]")
     exit()
 
+exit()
 username = sys.argv[1]
 password = sys.argv[2]
 X = int(sys.argv[3])
