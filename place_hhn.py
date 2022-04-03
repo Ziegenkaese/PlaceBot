@@ -4,16 +4,18 @@ from PIL import Image
 
 
 
-#if len(sys.argv) != 3:
-#    print("usage: python3 place_tile.py [reddit username] [reddit password]")
-#    exit()
+if len(sys.argv) != 3:
+    print("usage: python3 place_tile.py [reddit username] [reddit password] [X] [y]")
+    exit()
 
-username = "hhn-test"
-password = "INSERT PASSWORT HERE"
+username = sys.argv[1]
+password = sys.argv[2]
+X = int(sys.argv[3])
+Y = int(sys.argv[4])
 
 placer = Placer()
 placer.login(username, password)
 
 
-placer.maintain_image(1812, 826, 'HHN-3x10.png', (3, 10))
+placer.maintain_image(X, Y, 'HHN-3x10.png', (3, 10))
 
