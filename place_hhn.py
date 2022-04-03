@@ -18,5 +18,5 @@ placer = Placer()
 placer.login(username, password)
 
 
-placer.maintain_image(X, Y, filename, (3, 10))
+placer.maintain_image(X, Y, filename, (5, 12))
 
