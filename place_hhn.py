@@ -17,11 +17,16 @@ filename = sys.argv[5]
 placer = Placer()
 restart_count = 0
 
+img = Image.open(filename)
+W = img.width
+H = img.height
+img.close()
+
 while True:
     try:
         placer.login(username, password)
         print("starting maintain_image")
-        placer.maintain_image(X, Y, filename, (3, 10))
+        placer.maintain_image(X, Y, filename, (H, W))
     except:
         if restart_count < 5:
             exit(1)
