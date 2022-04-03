@@ -4,7 +4,7 @@ from PIL import Image
 
 
 
-if len(sys.argv) != 3:
+if len(sys.argv) >= 3:
     print("usage: python3 place_tile.py [reddit username] [reddit password] [X] [y]")
     exit()
 
