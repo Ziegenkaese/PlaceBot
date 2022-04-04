@@ -19,4 +19,4 @@ for user in users:
     placer.login(user["username"], user["password"])
 
 
-placer.maintain_image(X, Y, filename, (H, W))
+placer.maintain_image(X, Y, filename, (H, W), indexed_color=True)
