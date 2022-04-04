@@ -4,9 +4,9 @@ from PIL import Image
 from place_bot import Placer, Color
 
 placer = Placer()
-X = int(sys.argv[3])
-Y = int(sys.argv[4])
-filename = sys.argv[5]
+X = int(sys.argv[1])
+Y = int(sys.argv[2])
+filename = sys.argv[3]
 
 img = Image.open(filename)
 W = img.width
